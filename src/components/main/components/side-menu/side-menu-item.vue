@@ -6,7 +6,7 @@
         <span>{{ showTitle(parentItem) }}</span>
       </div>
     </template>
-    <!--  -->
+    <!-- 多级菜单子菜单 -->
     <template v-for="item in children">
       <!-- 三级菜单 -->
       <template v-if="item.children && item.children.length === 1">

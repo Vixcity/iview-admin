@@ -3,35 +3,79 @@
     <Header class="header-con">
       <header-bar :collapsed="collapsed" @on-coll-change="handleCollapsedChange">
         <!-- <user :message-unread-count="unreadCount" :user-avatar="userAvatar"/> -->
-        <div style="padding-left: 16px;color:white;border-left: 1px solid rgba(255, 255, 255, 0.5);height: 32px;line-height: 36px; margin-top: 16px;">退出图标</div>
+        <div
+          style="
+            padding-left: 16px;
+            color: white;
+            border-left: 1px solid rgba(255, 255, 255, 0.5);
+            height: 20px;
+            line-height: 20px;
+            margin-top: 14px;
+          "
+        >
+          <Icon type="md-power" size="18"/>
+        </div>
         <!-- <error-store v-if="$config.plugin['error-store'] && $config.plugin['error-store'].showInHeader" :has-read="hasReadErrorPage" :count="errorCount"></error-store> -->
-        <fullscreen v-model="isFullscreen" style="margin-right: 10px;color:white;"/>
+        <fullscreen v-model="isFullscreen" style="margin-right: 16px; color: white" />
       </header-bar>
     </Header>
     <Layout>
-      <Sider hide-trigger collapsible :width="256" :collapsed-width="64" v-model="collapsed" class="left-sider" style="position: relative;" :style="{overflow: 'hidden'}">
-        <side-menu accordion ref="sideMenu" :active-name="$route.name" :collapsed="collapsed" @on-select="turnToPage" :menu-list="menuList">
+      <Sider
+        hide-trigger
+        collapsible
+        :width="160"
+        :collapsed-width="64"
+        v-model="collapsed"
+        class="left-sider"
+        style="position: relative"
+        :style="{ overflow: 'hidden' }"
+      >
+        <side-menu
+          accordion
+          ref="sideMenu"
+          :active-name="$route.name"
+          :collapsed="collapsed"
+          @on-select="turnToPage"
+          :menu-list="menuList"
+        >
           <!-- 需要放在菜单上面的内容，如Logo，写在side-menu标签内部，如下 -->
           <div class="logo-con">
             <img v-show="!collapsed" src="@/assets/images/avatar.png" key="max-logo" />
-            <div v-show="!collapsed">张医生</div>
+            <div v-show="!collapsed" style="color: white; margin-left: 8px; font-size: 14px">
+              张医生
+            </div>
             <img v-show="collapsed" src="@/assets/images/avatar.png" key="min-logo" />
           </div>
-          <template v-slot:bottom>   <!-- 常规写法 -->
-            <div style="position: absolute;bottom: 0;left: 50%;transform: translateX(-50%);"> 按钮</div>
+          <template v-slot:bottom>
+            <!-- 常规写法 -->
+            <div style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%)">
+              按钮
+            </div>
           </template>
         </side-menu>
       </Sider>
       <Content class="main-content-con">
         <Layout class="main-layout-con">
           <div class="tag-nav-wrapper">
-            <tags-nav :value="$route" @input="handleClick" :list="tagNavList" @on-close="handleCloseTag"/>
+            <tags-nav
+              :value="$route"
+              @input="handleClick"
+              :list="tagNavList"
+              @on-close="handleCloseTag"
+            />
           </div>
           <Content class="content-wrapper">
-            <keep-alive :include="cacheList">
-              <router-view/>
-            </keep-alive>
-            <ABackTop :height="100" :bottom="80" :right="50" container=".content-wrapper"></ABackTop>
+            <div style="background: white;height: 100%;padding: 16px 8px">
+              <keep-alive :include="cacheList">
+                <router-view />
+              </keep-alive>
+              <ABackTop
+                :height="100"
+                :bottom="80"
+                :right="50"
+                container=".content-wrapper"
+              ></ABackTop>
+            </div>
           </Content>
         </Layout>
       </Content>
@@ -72,9 +116,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters([
-      'errorCount'
-    ]),
+    ...mapGetters(['errorCount']),
     tagNavList () {
       return this.$store.state.app.tagNavList
     },
@@ -85,7 +127,14 @@ export default {
       return this.$store.state.user.avatarImgPath
     },
     cacheList () {
-      const list = ['ParentView', ...this.tagNavList.length ? this.tagNavList.filter(item => !(item.meta && item.meta.notCache)).map(item => item.name) : []]
+      const list = [
+        'ParentView',
+        ...(this.tagNavList.length
+          ? this.tagNavList
+            .filter(item => !(item.meta && item.meta.notCache))
+            .map(item => item.name)
+          : [])
+      ]
       return list
     },
     menuList () {
@@ -110,10 +159,7 @@ export default {
       'setHomeRoute',
       'closeTag'
     ]),
-    ...mapActions([
-      'handleLogin',
-      'getUnreadMessageCount'
-    ]),
+    ...mapActions(['handleLogin', 'getUnreadMessageCount']),
     turnToPage (route) {
       let { name, params, query } = {}
       if (typeof route === 'string') name = route
@@ -152,7 +198,7 @@ export default {
     }
   },
   watch: {
-    '$route' (newRoute) {
+    $route (newRoute) {
       const { name, query, params, meta } = newRoute
       this.addTag({
         route: { name, query, params, meta },

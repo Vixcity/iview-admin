@@ -51,21 +51,21 @@ export default [
     ]
   },
   {
-    path: '/join',
-    name: 'join',
+    path: '/treated',
+    name: 'treated',
     component: Main,
     meta: {
       hideInBread: true
     },
     children: [
       {
-        path: 'join_page',
-        name: 'join_page',
+        path: 'treated',
+        name: 'treated',
         meta: {
           icon: '_qq',
           title: '接诊'
         },
-        component: () => import('@/view/join-page.vue')
+        component: () => import('@/view/treated/treated.vue')
       }
     ]
   },
@@ -213,7 +213,7 @@ export default [
     name: 'update',
     meta: {
       icon: 'md-cloud-upload',
-      title: '数据上传'
+      title: '脱敏治疗'
     },
     component: Main,
     children: [
@@ -242,7 +242,7 @@ export default [
     name: 'excel',
     meta: {
       icon: 'ios-stats',
-      title: 'EXCEL导入导出'
+      title: '患者管理'
     },
     component: Main,
     children: [
@@ -279,7 +279,7 @@ export default [
         name: 'tools_methods_page',
         meta: {
           icon: 'ios-hammer',
-          title: '工具方法',
+          title: '专科随访',
           beforeCloseName: 'before_close_normal'
         },
         component: () => import('@/view/tools-methods/tools-methods.vue')
@@ -299,7 +299,7 @@ export default [
         name: 'error_store_page',
         meta: {
           icon: 'ios-bug',
-          title: '错误收集'
+          title: '健康宣教'
         },
         component: () => import('@/view/error-store/error-store.vue')
       }
@@ -319,7 +319,7 @@ export default [
         name: 'error_logger_page',
         meta: {
           icon: 'ios-bug',
-          title: '错误收集'
+          title: '模板设置'
         },
         component: () => import('@/view/single-page/error-logger.vue')
       }
@@ -338,7 +338,26 @@ export default [
         name: 'directive_page',
         meta: {
           icon: 'ios-navigate',
-          title: '指令'
+          title: '模板设置'
+        },
+        component: () => import('@/view/directive/directive.vue')
+      }
+    ]
+  },
+  {
+    path: '/directive',
+    name: 'directive',
+    meta: {
+      hideInBread: true
+    },
+    component: Main,
+    children: [
+      {
+        path: 'directive_page',
+        name: 'directive_page',
+        meta: {
+          icon: 'ios-navigate',
+          title: '科室设置'
         },
         component: () => import('@/view/directive/directive.vue')
       }
@@ -349,7 +368,7 @@ export default [
     name: 'multilevel',
     meta: {
       icon: 'md-menu',
-      title: '多级菜单'
+      title: '业务统计'
     },
     component: Main,
     children: [
@@ -401,6 +420,25 @@ export default [
           title: '二级-3'
         },
         component: () => import('@/view/multilevel/level-2-3.vue')
+      }
+    ]
+  },
+  {
+    path: '/directive',
+    name: 'directive',
+    meta: {
+      hideInBread: true
+    },
+    component: Main,
+    children: [
+      {
+        path: 'directive_page',
+        name: 'directive_page',
+        meta: {
+          icon: 'ios-navigate',
+          title: '科研数据'
+        },
+        component: () => import('@/view/directive/directive.vue')
       }
     ]
   },

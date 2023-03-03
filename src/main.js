@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
+import moment from 'moment'
 import iView from 'iview'
 import config from '@/config'
 import importDirective from '@/directive'
@@ -17,6 +18,7 @@ import 'v-org-tree/dist/v-org-tree.css'
 // 实际打包时应该不引入mock
 /* eslint-disable */
 if (process.env.NODE_ENV !== 'production') require('@/mock')
+Vue.prototype.$moment = moment;
 
 Vue.use(iView)
 Vue.use(TreeTable)
