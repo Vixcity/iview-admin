@@ -1,7 +1,8 @@
 <template>
   <div class="header-bar">
+    <div class="companyName">这里是公司的图标和名称</div>
     <sider-trigger :collapsed="collapsed" icon="md-menu" @on-change="handleCollpasedChange"></sider-trigger>
-    <custom-bread-crumb show-icon style="margin-left: 30px;" :list="breadCrumbList"></custom-bread-crumb>
+    <!-- <custom-bread-crumb show-icon style="margin-left: 30px;" :list="breadCrumbList"></custom-bread-crumb> -->
     <div class="custom-content-con">
       <slot></slot>
     </div>

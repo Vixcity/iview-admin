@@ -51,15 +51,6 @@ export default [
     ]
   },
   {
-    path: '',
-    name: 'doc',
-    meta: {
-      title: '文档',
-      href: 'https://lison16.github.io/iview-admin-doc/#/',
-      icon: 'ios-book'
-    }
-  },
-  {
     path: '/join',
     name: 'join',
     component: Main,
@@ -72,7 +63,7 @@ export default [
         name: 'join_page',
         meta: {
           icon: '_qq',
-          title: 'QQ群'
+          title: '接诊'
         },
         component: () => import('@/view/join-page.vue')
       }
@@ -92,7 +83,7 @@ export default [
         name: 'message_page',
         meta: {
           icon: 'md-notifications',
-          title: '消息中心'
+          title: '业务统计'
         },
         component: () => import('@/view/single-page/message/index.vue')
       }
@@ -103,7 +94,7 @@ export default [
     name: 'components',
     meta: {
       icon: 'logo-buffer',
-      title: '组件'
+      title: '检验检查'
     },
     component: Main,
     children: [
@@ -292,25 +283,6 @@ export default [
           beforeCloseName: 'before_close_normal'
         },
         component: () => import('@/view/tools-methods/tools-methods.vue')
-      }
-    ]
-  },
-  {
-    path: '/i18n',
-    name: 'i18n',
-    meta: {
-      hideInBread: true
-    },
-    component: Main,
-    children: [
-      {
-        path: 'i18n_page',
-        name: 'i18n_page',
-        meta: {
-          icon: 'md-planet',
-          title: 'i18n - {{ i18n_page }}'
-        },
-        component: () => import('@/view/i18n/i18n-page.vue')
       }
     ]
   },

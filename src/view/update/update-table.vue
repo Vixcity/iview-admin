@@ -50,6 +50,6 @@ export default {
   margin-top: 10px;
 }
 .code-high-line{
-  color: #2d8cf0;
+  color: #3171FF;
 }
 </style>
